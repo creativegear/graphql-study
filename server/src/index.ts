@@ -57,17 +57,7 @@ const server = new ApolloServer({
 });
 
 const { url } = await startStandaloneServer(server, {
-  listen: { port: 4000 },
-  context: async ({ req, res }) => {
-    if (true) {
-      throw new GraphQLError('User is not authenticated', {
-        extensions: {
-          code: 'UNAUTHENTICATED',
-          http: { status: 401 },
-        }
-      });
-    }
-  }
+  listen: { port: 4000 }
 });
 
 console.log(`🚀  Server ready at: ${url}`);
