@@ -23,6 +23,12 @@ const resolvers = {
       return authorRepository.findAuthorById(args.id)
     },
   },
+  Mutation: { // 各Mutationのリゾルバー
+    updateBook: (parent, args, contextValue, info) => {
+      const {id, title} = args.input
+      return bookRepository.updateBook(id, title)
+    },
+  },
   Book: {
     author: (parent) => { // Bookの子のAuthorを取得する処理。フィールドリゾルバー
       return authorRepository.findAuthorById(parent.authorId)

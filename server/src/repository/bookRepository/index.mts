@@ -19,9 +19,15 @@ const books = [
 const findAllBooks = () => books;
 const findBookById = (id: string) => books.find((book) => book.id === id);
 const findBooksByAuthorId = (authorId: string) => books.filter((book) => book.authorId === authorId);
+const updateBook = (id: string, newTitle: string) => {
+  const book = findBookById(id)
+  book.title = newTitle
+  return book;
+}
 
 export const bookRepository = {
   findAllBooks,
   findBookById,
-  findBooksByAuthorId
+  findBooksByAuthorId,
+  updateBook
 }
