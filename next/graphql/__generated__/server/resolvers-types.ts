@@ -17,7 +17,6 @@ export type Scalars = {
 };
 
 export type CreateTaskInput = {
-  assineeId?: InputMaybe<Scalars['ID']['input']>;
   title: Scalars['String']['input'];
 };
 
@@ -53,7 +52,7 @@ export type Query = {
   __typename?: 'Query';
   member?: Maybe<Member>;
   members: Array<Member>;
-  task?: Maybe<Task>;
+  task: Task;
   tasks: Array<Task>;
 };
 
@@ -75,8 +74,8 @@ export type Task = {
 };
 
 export type UpdateTaskInput = {
-  assineeId?: InputMaybe<Scalars['ID']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
+  id: Scalars['ID']['input'];
+  title: Scalars['String']['input'];
 };
 
 
@@ -189,7 +188,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   member?: Resolver<Maybe<ResolversTypes['Member']>, ParentType, ContextType, RequireFields<QueryMemberArgs, 'id'>>;
   members?: Resolver<Array<ResolversTypes['Member']>, ParentType, ContextType>;
-  task?: Resolver<Maybe<ResolversTypes['Task']>, ParentType, ContextType, RequireFields<QueryTaskArgs, 'id'>>;
+  task?: Resolver<ResolversTypes['Task'], ParentType, ContextType, RequireFields<QueryTaskArgs, 'id'>>;
   tasks?: Resolver<Array<ResolversTypes['Task']>, ParentType, ContextType>;
 };
 

@@ -11,17 +11,16 @@ type Member {
 
 input CreateTaskInput {
   title: String!
-  assineeId: ID
 }
 
 input UpdateTaskInput {
-  title: String
-  assineeId: ID
+  id: ID!
+  title: String!
 }
 
 type Query {
   tasks: [Task!]!
-  task(id: ID!): Task
+  task(id: ID!): Task!
   members: [Member!]!
   member(id: ID!): Member
 }

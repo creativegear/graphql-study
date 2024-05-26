@@ -13,6 +13,9 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
+    "mutation CreateTask($input: CreateTaskInput!) {\n  createTask(input: $input) {\n    id\n    title\n    assignee {\n      id\n      name\n    }\n  }\n}": types.CreateTaskDocument,
+    "query FetchTask($taskId: ID!) {\n  task(id: $taskId) {\n    id\n    title\n    assignee {\n      id\n      name\n    }\n  }\n}": types.FetchTaskDocument,
+    "mutation Mutation($input: UpdateTaskInput!) {\n  updateTask(input: $input) {\n    id\n    title\n    assignee {\n      id\n      name\n    }\n  }\n}": types.MutationDocument,
     "query FetchTasks {\n  tasks {\n    id\n    title\n  }\n}": types.FetchTasksDocument,
 };
 
@@ -30,6 +33,18 @@ const documents = {
  */
 export function gql(source: string): unknown;
 
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "mutation CreateTask($input: CreateTaskInput!) {\n  createTask(input: $input) {\n    id\n    title\n    assignee {\n      id\n      name\n    }\n  }\n}"): (typeof documents)["mutation CreateTask($input: CreateTaskInput!) {\n  createTask(input: $input) {\n    id\n    title\n    assignee {\n      id\n      name\n    }\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "query FetchTask($taskId: ID!) {\n  task(id: $taskId) {\n    id\n    title\n    assignee {\n      id\n      name\n    }\n  }\n}"): (typeof documents)["query FetchTask($taskId: ID!) {\n  task(id: $taskId) {\n    id\n    title\n    assignee {\n      id\n      name\n    }\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "mutation Mutation($input: UpdateTaskInput!) {\n  updateTask(input: $input) {\n    id\n    title\n    assignee {\n      id\n      name\n    }\n  }\n}"): (typeof documents)["mutation Mutation($input: UpdateTaskInput!) {\n  updateTask(input: $input) {\n    id\n    title\n    assignee {\n      id\n      name\n    }\n  }\n}"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

@@ -3,14 +3,18 @@
 import { useQuery } from "@apollo/client";
 import { gql } from "../../../graphql/__generated__/client";
 
-const tasksDocument = gql(`query FetchTasks {
+export const tasksDocument = gql(`query FetchTasks {
   tasks {
     id
     title
   }
 }`);
 
-const TaskList = () => {
+type TaskListProps = {
+  selectTask: (id: string) => void
+}
+
+const TaskList = ({ selectTask }: TaskListProps) => {
   const { data, loading, error } = useQuery(tasksDocument);
 
   if (loading) {
@@ -20,7 +24,11 @@ const TaskList = () => {
   return (
     <div>
       <ul>
-        {data && data.tasks.map(task => <li key={task.id}>{task.title}</li>)}
+        {data && data.tasks.map(task => {
+          return <li onClick={() => selectTask(task.id)} key={task.id}>
+            {task.title}
+            </li>
+        })}
       </ul>
     </div>
   );
