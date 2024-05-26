@@ -3,7 +3,6 @@ import { join } from "path";
 import { startServerAndCreateNextHandler } from "@as-integrations/next";
 import { ApolloServer } from "@apollo/server";
 import { Resolvers } from "../../../../apollo/__generated__/server/resolvers-types";
-import { NextRequest } from "next/server";
 
 const typeDefs = readFileSync(
   join(process.cwd(), "apollo/documents/schema.gql"),

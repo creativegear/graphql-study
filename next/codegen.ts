@@ -1,17 +1,17 @@
 import { CodegenConfig } from "@graphql-codegen/cli";
 
 const config: CodegenConfig = {
-  schema: "apollo/documents/**/*.gql",
-  documents: ["apollo/documents/**/*.gql"],
+  schema: "graphql/documents/**/*.gql",
+  documents: ["graphql/documents/**/*.gql"],
   generates: {
-    "./apollo/__generated__/client/": {
+    "./graphql/__generated__/client/": {
       preset: "client",
       plugins: [],
       presetConfig: {
         gqlTagName: "gql",
       },
     },
-    "./apollo/__generated__/server/resolvers-types.ts": {
+    "./graphql/__generated__/server/resolvers-types.ts": {
       plugins: ["typescript", "typescript-resolvers"],
     },
   },
