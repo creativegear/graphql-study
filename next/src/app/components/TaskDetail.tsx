@@ -16,6 +16,10 @@ export const taskDocument = gql(`query FetchTask($taskId: ID!) {
   }
 }`);
 
+// 本来こういう書き方はしないが、CSSが見る時にノイズになるので一旦こちらに書いている
+const borderStyle = {padding: 20, borderColor: '#777777', borderWidth: 1}
+const buttonStyle = {marginLeft: 10, padding: '5px 10px', borderRadius: 10, backgroundColor: '#4d74eb', color: '#FFFFFF'}
+
 type TaskDetailProps = {
   taskId: string | null
 }
@@ -41,9 +45,14 @@ const TaskDetail = ({ taskId }: TaskDetailProps) => {
     return <TaskEdit task={data.task} onEdit={() => setEdit(false)}/>
   }
   return (
-    <div>
-      <div>タイトル：{data?.task?.title}<button style={{marginLeft: 10}} onClick={() => setEdit(true)}>編集する</button></div>
-      <div>担当者：{data?.task?.assignee?.name ?? '未設定'}</div>
+    <div style={borderStyle}>
+      <div>
+        タイトル：{data?.task?.title}
+        <button style={buttonStyle} onClick={() => setEdit(true)}>編集する</button>
+      </div>
+      <div>
+        担当者：{data?.task?.assignee?.name ?? '未設定'}
+      </div>
     </div>
   );
 };

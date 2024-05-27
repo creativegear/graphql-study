@@ -16,7 +16,7 @@ export default function TaskListPage() {
           <TaskList selectTask={setTaskId}/>
           <TaskCreate/>
         </div>
-        <div style={{flex: 1}}>
+        <div style={{flex: 1, marginLeft: 20}}>
           <TaskDetail taskId={taskId} />
         </div>
       </div>

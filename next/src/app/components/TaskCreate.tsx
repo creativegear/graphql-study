@@ -16,6 +16,11 @@ const createTaskDocument = gql(`mutation CreateTask($input: CreateTaskInput!) {
   }
 }`);
 
+// 本来こういう書き方はしないが、CSSが見る時にノイズになるので一旦こちらに書いている
+const borderStyle = {padding: 20, borderColor: '#777777', borderWidth: 1, marginTop: 20, textAlign: 'center'}
+const buttonStyle = {marginLeft: 10, padding: '5px 10px', borderRadius: 10, backgroundColor: '#4d74eb', color: '#FFFFFF', marginTop: 10}
+const inputStyle = {padding: 5, borderColor: '#777777', borderWidth: 1}
+
 const TaskCreate = () => {
   const [title, setTitle] = useState('');
   const [createTask] = useMutation(createTaskDocument, {
@@ -46,9 +51,9 @@ const TaskCreate = () => {
   });
 
   return (
-    <div>
-      <div>タイトル：<input value={title} onChange={e => setTitle(e.target.value)}/></div>
-      <button onClick={async () => {
+    <div style={borderStyle}>
+      <div>タイトル：<input style={inputStyle} value={title} onChange={e => setTitle(e.target.value)}/></div>
+      <button style={buttonStyle} onClick={async () => {
         if(title.trim().length === 0){
           return;
         }

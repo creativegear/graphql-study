@@ -10,6 +10,9 @@ export const tasksDocument = gql(`query FetchTasks {
   }
 }`);
 
+// 本来こういう書き方はしないが、CSSが見る時にノイズになるので一旦こちらに書いている
+const borderStyle = {padding: 20, borderColor: '#777777', borderWidth: 1}
+
 type TaskListProps = {
   selectTask: (id: string) => void
 }
@@ -22,10 +25,10 @@ const TaskList = ({ selectTask }: TaskListProps) => {
   }
 
   return (
-    <div>
+    <div style={borderStyle}>
       <ul>
         {data && data.tasks.map(task => {
-          return <li onClick={() => selectTask(task.id)} key={task.id}>
+          return <li style={borderStyle} onClick={() => selectTask(task.id)} key={task.id}>
             {task.title}
             </li>
         })}
